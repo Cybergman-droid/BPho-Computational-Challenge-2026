@@ -7,11 +7,16 @@ const kB = 1.380649e-23; // Boltzmann constant (J/K)
 const R = 8.314462618; // Molar gas constant (J/mol/K)
 const e = Math.E;
 const ctx = document.getElementById("testChart");
-let dataSets = PlanckSpecDataset(4000);
+let planckSpecDataset = [
+	...PlanckSpecDatasetGenerator(4000, "#0077ff"),
+	...PlanckSpecDatasetGenerator(5000, "#ff3333"),
+	...PlanckSpecDatasetGenerator(6000, "#ffcc00"),
+];
+
 const config = {
 	type: "line",
 	data: {
-		datasets: dataSets,
+		datasets: planckSpecDataset,
 	},
 	options: {
 		responsive: true,
@@ -32,7 +37,7 @@ const config = {
 				type: "linear",
 				grid: { color: "rgba(0,0,0,0.2)" },
 				ticks: {
-					stepSize: 1, // smaller squares
+					callback: (value) => value.toExponential(1), // smaller squares
 				},
 				title: {
 					display: true,
@@ -40,7 +45,6 @@ const config = {
 				},
 			},
 		},
-		borderColor: colours[6],
 	},
 };
 const chart = new Chart(ctx, config);
@@ -54,30 +58,35 @@ function PlanckSpec(lambda_nm, T) {
 	return ans;
 }
 
-function PlanckSpecDataset(T) {
+function PlanckSpecDatasetGenerator(T, color) {
 	let points = [];
-	for (let i = 250; i <= 2500; i += 50) {
-		let nextPoint = PlanckSpec(i, T);
-		let data = { x: i, y: nextPoint };
-		let dataPoint = {
-			data: data,
-			borderColor: colours[6],
-			borderWidth: 5,
-			showLine: true,
-			pointRadius: 0,
-			tension: 20,
-		};
-		points.push(dataPoint);
+
+	for (let i = 250; i <= 2500; i += 10) {
+		points.push({ x: i, y: PlanckSpec(i, T) });
 	}
-	return points;
+
+	return [
+		{
+			label: `T = ${T}K`,
+			data: points,
+			borderColor: color,
+			borderWidth: 1.5,
+			pointRadius: 0,
+			tension: 0,
+		},
+	];
 }
 
-console.log(PlanckSpecDataset(4000));
+console.log(PlanckSpecDatasetGenerator(4000));
 
 // console.log(PlanckSpec(0, 6000));
 const reloadBtn = document.getElementById("reloadBtn");
 reloadBtn.addEventListener("click", () => {
-	dataSets = PlanckSpecDataset(4000);
-	chart.data.datasets = dataSets;
+	planckSpecDataset = [
+		...PlanckSpecDatasetGenerator(4000, "#0077ff"),
+		...PlanckSpecDatasetGenerator(5000, "#ff3333"),
+		...PlanckSpecDatasetGenerator(6000, "#ffcc00"),
+	];
+	chart.data.datasets = planckSpecDataset;
 	chart.update();
 });
