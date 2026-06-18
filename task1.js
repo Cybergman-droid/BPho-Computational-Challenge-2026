@@ -61,7 +61,7 @@ function randomWalk(N, stepSize) {
 
 function randomWalkGenerator(numOfWalks) {
 	let datasets = [];
-	for (let i = 0; i <= numOfWalks; i++) {
+	for (let i = 1; i <= numOfWalks; i++) {
 		let walk = randomWalk(50, 1);
 		let dataSet = {
 			label: `walk${i}`,
