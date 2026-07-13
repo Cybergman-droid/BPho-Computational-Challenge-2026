@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="night">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		<link
 			href="https://cdn.jsdelivr.net/npm/daisyui@5"
 			rel="stylesheet"
@@ -16,18 +15,19 @@
 			type="text/css"
 		/>
 
-		<title>Random Walk</title>
+		<title>Planck Spectrum</title>
 	</head>
 	<body>
-		<a href="./index.html">
+		<a href="/bpho-computational-challenge-2026/index.html">
 			<button class="btn btn-soft btn-accent">Homepage</button></a
 		>
 
 		<div>
-			<canvas id="randomWalkChart"></canvas>
+			<canvas id="planckSpecChart"></canvas>
 		</div>
 		<button class="btn btn-soft btn-accent" id="reloadBtn">Reload</button>
-		<script src="./randomWalk.js" type="module"></script>
+
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="/src/planck_spectrum.ts" type="module"></script>
 	</body>
 </html>

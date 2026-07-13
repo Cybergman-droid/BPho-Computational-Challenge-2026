@@ -1,4 +1,4 @@
-export const colours = [
+export const colours: string[] = [
 	"#e6194B",
 	"#3cb44b",
 	"#ffe119",
