@@ -109,14 +109,50 @@ let config = {
 
 const chart = new Chart(ctx, config);
 
-const reloadBtn = document.getElementById(
-	"reloadBtn",
-) as HTMLButtonElement | null;
-if (!reloadBtn) {
-	throw new Error("Button element with id 'reloadBtn' not found");
+const materialSelect = document.getElementById(
+	"materialSelect",
+) as HTMLSelectElement;
+
+materialSelect.appendChild(new Option("All", "All"));
+
+for (const key of Object.keys(materials)) {
+	const option = document.createElement("option");
+	option.value = key;
+	option.textContent = key; // shows Au, Cu, Ti, etc.
+	materialSelect.appendChild(option);
 }
 
-reloadBtn.addEventListener("click", () => {
-	chart.data.datasets = einsteinDatasets;
-	chart.update();
+materialSelect.addEventListener("change", () => {
+	let newDataset = [];
+	const selected = materialSelect.value as keyof typeof materials | "All";
+
+	if (selected === "All") {
+		let i = 0;
+
+		for (let [key, value] of Object.entries(materials)) {
+			newDataset.push(
+				...EinsteinHeatCapacityDatasetGenerator(
+					key,
+					value.einsteinFreq,
+					colours[i],
+				),
+			);
+			i++;
+		}
+		chart.data.datasets = newDataset;
+		chart.update();
+	} else {
+		const index = Object.keys(materials).indexOf(selected);
+		const colour = colours[index];
+		let freq: number = materials[selected].einsteinFreq;
+
+		newDataset = EinsteinHeatCapacityDatasetGenerator(
+			selected,
+			freq,
+			colour, // or pick a colour dynamically
+		);
+
+		chart.data.datasets = newDataset;
+		chart.update(); // animate the redraw
+	}
 });
