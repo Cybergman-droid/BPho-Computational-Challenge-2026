@@ -5,7 +5,9 @@ declare const Chart: any;
 
 type Point = { x: number; y: number };
 
-const ctx = document.getElementById("testChart") as HTMLCanvasElement | null;
+const ctx = document.getElementById(
+	"einsteinHeatCapacityChart",
+) as HTMLCanvasElement | null;
 if (!ctx) {
 	throw new Error("Canvas element with id 'testChart' not found");
 }
@@ -60,7 +62,6 @@ function EinsteinHeatCapacityDatasetGenerator(
 
 let einsteinDatasets = [];
 let i = 0;
-
 for (let [key, value] of Object.entries(materials)) {
 	einsteinDatasets.push(
 		...EinsteinHeatCapacityDatasetGenerator(
@@ -79,6 +80,10 @@ let config = {
 	},
 	options: {
 		responsive: true,
+		interaction: {
+			mode: "nearest",
+			intersect: false,
+		},
 		animation: {
 			duration: 2000,
 			easing: "easeOutQuart",
