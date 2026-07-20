@@ -86,7 +86,7 @@ function randomWalk(N: number, stepSize: number): Point[] {
 function randomWalkGenerator(numOfWalks: number): Dataset[] {
 	const datasets: Dataset[] = [];
 	for (let i = 1; i <= numOfWalks; i++) {
-		const walk = randomWalk(50, 1);
+		const walk = randomWalk(50, 1.5);
 		datasets.push({
 			label: `walk${i}`,
 			data: walk,
