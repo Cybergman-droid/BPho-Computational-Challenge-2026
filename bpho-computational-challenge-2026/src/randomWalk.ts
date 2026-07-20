@@ -30,7 +30,7 @@ const config: any = {
 			legend: { display: false },
 			title: {
 				display: true,
-				text: "Random Simulation",
+				text: "Random Walk Simulation",
 				font: { size: 15 },
 			},
 		},
