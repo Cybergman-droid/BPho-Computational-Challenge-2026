@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@5"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+
+		<title>Hydrogen Spectra</title>
+	</head>
+	<body>
+		<a href="/bpho-computational-challenge-2026/index.html">
+			<button class="btn btn-soft btn-accent">Homepage</button></a
+		>
+
+		<div>
+			<canvas id="hydrogenSpectraChart"></canvas>
+		</div>
+
+		<!-- <div class="flex items-center gap-10">
+			<select id="materialSelect" class="select select-info d w-full max-w-xs">
+				<option disabled selected>Select material</option>
+			</select>
+
+			<label class="flex cursor-pointer gap-2">
+				<span class="label-text">Full Y axis</span>
+				<input type="checkbox" class="toggle toggle-info" id="yAxisToggle" />
+				<span class="label-text">Start Y axis from 0</span>
+			</label>
+		</div> -->
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="/src/hydrogenSpectra.ts" type="module"></script>
+	</body>
+</html>
