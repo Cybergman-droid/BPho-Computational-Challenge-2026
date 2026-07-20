@@ -9,7 +9,9 @@ const ctx = document.getElementById(
 	"einsteinHeatCapacityChart",
 ) as HTMLCanvasElement | null;
 if (!ctx) {
-	throw new Error("Canvas element with id 'testChart' not found");
+	throw new Error(
+		"Canvas element with id 'einsteinHeatCapacityChart' not found",
+	);
 }
 
 const materials = {
