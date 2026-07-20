@@ -79,6 +79,14 @@ let config = {
 		datasets: einsteinDatasets,
 	},
 	options: {
+		plugins: {
+			legend: { display: false },
+			title: {
+				display: true,
+				text: "Einstein Heat Capacity Of Solids",
+				font: { size: 15 },
+			},
+		},
 		responsive: true,
 		interaction: {
 			mode: "nearest",

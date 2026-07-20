@@ -26,6 +26,14 @@ const config: any = {
 		datasets: dataSets,
 	},
 	options: {
+		plugins: {
+			legend: { display: false },
+			title: {
+				display: true,
+				text: "Random Simulation",
+				font: { size: 15 },
+			},
+		},
 		responsive: true,
 		aspectRatio: 1,
 		scales: {

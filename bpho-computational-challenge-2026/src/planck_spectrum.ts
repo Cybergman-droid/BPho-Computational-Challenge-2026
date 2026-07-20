@@ -22,6 +22,14 @@ const config: any = {
 		datasets: planckSpecDataset,
 	},
 	options: {
+		plugins: {
+			legend: { display: false },
+			title: {
+				display: true,
+				text: "Planck Spectrum",
+				font: { size: 15 },
+			},
+		},
 		responsive: true,
 		aspectRatio: 1,
 		scales: {
@@ -41,6 +49,7 @@ const config: any = {
 				grid: { color: "rgba(0,0,0,0.2)" },
 				ticks: {
 					callback: (value: number) => value.toExponential(1),
+					// callback: (value: number) => value / 1e13 + " ×10¹3",
 				},
 				title: {
 					display: true,

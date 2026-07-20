@@ -88,6 +88,13 @@ let config = {
 		datasets: photoElectricEffectDatasets,
 	},
 	options: {
+		plugins: {
+			title: {
+				display: true,
+				text: "Photoelectric Effect — Stopping Voltage vs Frequency",
+				font: { size: 15 },
+			},
+		},
 		responsive: true,
 		interaction: {
 			mode: "nearest",
@@ -133,6 +140,7 @@ for (const v of visibleLines) {
 	chart.data.datasets.push({
 		label: "",
 		// hidden: true,
+		showInLegend: false,
 		data: [
 			{ x: v.f, y: yMin },
 			{ x: v.f, y: yMax },
@@ -190,6 +198,8 @@ materialSelect.addEventListener("change", () => {
 		newDataset.push({
 			label: "",
 			// hidden: true,
+			showInLegend: false,
+
 			data: [
 				{ x: v.f, y: yMin },
 				{ x: v.f, y: yMax },
